@@ -10,6 +10,11 @@ export const store = new vuex.Store({
         ask: [],
         jobs: [],
     },
+    getters: {
+        fetchedAsk(state) {
+            return state.ask;
+        }
+    },
     mutations: {
         SET_NEWS(state, news) {
             state.news = news;
