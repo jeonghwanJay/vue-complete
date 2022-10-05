@@ -1,33 +1,40 @@
 <template>
   <div>
-    <ul class="news-list">
+    
+    <!-- <ul class="news-list">
       <li v-for="job in this.$store.state.jobs" v-bind:key="job.data" class="post">
         <div class="point">
           {{job.points || 0}}
         </div>
           <div>
             <p class="news-title">
-              <a :href="job.url">{{job.title}}</a>
+              <a v-bind:href="job.url">{{job.title}}</a>
             </p>
           <small class="link-text">{{job.time_ago}} by 
-            <a :href="job.url">{{job.domain}}</a>
+            <a v-bind:href="job.url">{{job.domain}}</a>
           </small>
         </div>
       </li>
-    </ul>
+    </ul> -->
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
+import ListItem from '../components/ListItem.vue'
 export default {
-  created() {
-  this.$store.dispatch('FETCH_JOBS')
+  components: {
+    ListItem, 
   }
-}
+  // created() {
+  // this.$store.dispatch('FETCH_JOBS')
+  // console.log(this.$store.state.jobs);
+  }
+// }
 </script>
 
 <style scoped>
-.news-list {
+/* .news-list {
   margin: 0;
   padding: 0;
   
@@ -50,6 +57,6 @@ export default {
   margin: 0;
 }
 .link-text {
-  color: #828282;
-}
+  color: #828282; */
+/* } */
 </style>
