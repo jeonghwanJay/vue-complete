@@ -7,10 +7,13 @@
         </div>
         <div class="user-description">
          <div>
-            {{info.id}}
+            <slot name="username">{{info.id}}</slot>
          </div>
           <div class="time">
-            {{ info.created}}
+            <slot name="time">{{info.created}}</slot>
+          </div>
+          <div>
+            <slot name="karma"></slot>
           </div>
         </div>
       </div>

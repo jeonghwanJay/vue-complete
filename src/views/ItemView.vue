@@ -1,17 +1,26 @@
 <template>
   <div>
     <section>
-      <div class="user-container">
+      <!-- <div class="user-container">
         <div>
           <i class="fa-solid fa-user"></i>
         </div>
         <div class="user-description">
-          <router-link v-bind:to="`/user/${itemInfo.user}`">{{ itemInfo.user}}</router-link>
-          <div class="time">{{ itemInfo.time_ago}}</div>
+          <slot name="username">{{itemInfo.user}}</slot> -->
+          <!-- <router-link v-bind:to="`/user/${itemInfo.user}`">{{ itemInfo.user}}</router-link> -->
+          <!-- <div class="time">
+            <slot name="time">{{itemInfo.time_ago}}</slot>
+          </div>
         </div>
-      </div>
-      <h2>{{itemInfo.title}}</h2>
+      </div> -->
+      <user-profile :info="itemInfo">
+        <div slot="username">{{itemInfo.user}}</div>
+        <template slot="time">{{itemInfo.time_ago}}</template>
+      </user-profile>
     </section>
+    <section>
+      <h2>{{itemInfo.title}}</h2>
+      </section>
     <section>
       <div v-html="itemInfo.content">{{itemInfo.content}}</div>
     </section>
@@ -20,7 +29,11 @@
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue'
 export default {
+  components: {
+    UserProfile,
+  },
   computed: {
     itemInfo() {
       return this.$store.state.item
