@@ -1,21 +1,9 @@
 <template>
   <div>
     <section>
-      <!-- <div class="user-container">
-        <div>
-          <i class="fa-solid fa-user"></i>
-        </div>
-        <div class="user-description">
-          <slot name="username">{{itemInfo.user}}</slot> -->
-          <!-- <router-link v-bind:to="`/user/${itemInfo.user}`">{{ itemInfo.user}}</router-link> -->
-          <!-- <div class="time">
-            <slot name="time">{{itemInfo.time_ago}}</slot>
-          </div>
-        </div>
-      </div> -->
       <user-profile :info="itemInfo">
-        <div slot="username">{{itemInfo.user}}</div>
-        <template slot="time">{{itemInfo.time_ago}}</template>
+        <router-link slot="username" :to="`/user/${itemInfo.user}`">{{itemInfo.user}}</router-link>
+        <template slot="time">{{'Posted ' + itemInfo.time_ago}}</template>
       </user-profile>
     </section>
     <section>

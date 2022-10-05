@@ -1,23 +1,20 @@
-<template>
-  <div>
-    <section>
-      <div class="user-container">
-        <div>
-          <i class="fa-solid fa-user"></i>
-        </div>
-        <div class="user-description">
-         <div>
-            <slot name="username">{{info.id}}</slot>
-         </div>
-          <div class="time">
-            <slot name="time">{{info.created}}</slot>
-          </div>
-          <div>
-            <slot name="karma"></slot>
-          </div>
-        </div>
+<template>    
+  <div class="user-container">
+    <div>
+      <i class="fa-solid fa-user"></i>
+    </div>
+    <div class="user-description">
+        <slot name="username">
+          <!-- 상위 컴포넌트에서 정의할 내용 -->
+        </slot>
+      <div class="time">
+        <!-- time : {{info.created}} -->
+        <slot name="time">
+          <!-- 상위 컴포넌트에서 정의할 내용 -->
+        </slot>
+         <slot name="karma"></slot>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
