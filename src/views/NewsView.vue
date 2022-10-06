@@ -13,8 +13,11 @@ export default {
   },
   created() {
     bus.$emit('start:spinner')
-    this.$store.dispatch('FETCH_NEWS')
-    bus.$emit('end:spinner')
+    setTimeout(() => {
+      this.$store.dispatch('FETCH_NEWS')
+    .then(() => bus.$emit('end:spinner'))
+    .catch((error) => console.log(error))
+    }, 3000)
   },
 }
 </script>
