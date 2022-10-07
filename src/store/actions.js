@@ -1,4 +1,4 @@
-import { fetchAskList, fetchNewsList, fetchJobsList, fetchUserInfo, fetchCommentId } from "@/api"
+import { fetchAskList, fetchNewsList, fetchJobsList, fetchList, fetchUserInfo, fetchCommentId } from "@/api"
 
 export default {
         FETCH_NEWS(context) {
@@ -22,6 +22,11 @@ export default {
                     return response;
                 })
                 .catch(error => console.log(error))
+        },
+        FETCH_LIST({commit}, pageName) {
+            fetchList(pageName)
+            .then(({ data }) => commit('SET_LIST', data))
+            .catch(error => console.log(error))
         },
         FETCH_USER(context, username) {
             fetchUserInfo(username)
