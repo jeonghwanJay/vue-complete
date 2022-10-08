@@ -19,30 +19,42 @@ export const router = new VueRouter({
             redirect: '/news',
         },
         {
-            path: '/jobs',
-            name: 'jobs',
-            // component: createListView('JobsView')
-            component: JobsView
-        },
-                {
-            path: '/ask',
-            name: 'ask',
-            // component: createListView('AskView')
-            component: AskView
-        },
-                        {
             path: '/news',
             name: 'news',
             // component: createListView('NewView')
             component: NewsView,
-            beforeEnter(from, to, next) {
-            bus.$emit('start:spinner')
-            store.dispatch('FETCH_LIST', to.name)
-                .then(() => bus.$emit('end:spinner'))
+            beforeEnter: (to, from, next) => {
+                bus.$emit('start:spinner')
+                store.dispatch('FETCH_LIST', to.name)
+                .then(() => next())
                 .catch((error) => console.log(error))
-                next()
-            }
+            },
         },
+        {
+            path: '/ask',
+            name: 'ask',
+            // component: createListView('AskView')
+            component: AskView,
+            beforeEnter: (from, to, next) => {
+                bus.$emit('start:spinner')
+                store.dispatch('FETCH_LIST', to.name)
+                .then(() => next())
+                .catch((error) => console.log(error))
+            },
+        },
+        {
+            path: '/jobs',
+            name: 'jobs',
+            // component: createListView('JobsView')
+            component: JobsView,
+            beforeEnter: (from, to, next) => {
+                bus.$emit('start:spinner')
+                store.dispatch('FETCH_LIST', to.name)
+                .then(() => next())
+                .catch((error) => console.log(error))
+            },
+        },
+
         {
             path: '/user/:id',
             component: UserView,

@@ -2,30 +2,32 @@ import { fetchAskList, fetchNewsList, fetchJobsList, fetchList, fetchUserInfo, f
 
 export default {
         FETCH_NEWS(context) {
-            fetchNewsList()
+            return fetchNewsList()
                 .then(response => { context.commit('SET_NEWS', response.data) 
                     return response;
                 })
-                .catch(error => console.log(error))
-            return this.response;
+                .catch(error => console.log(error))          
         },
         FETCH_ASK(context) {
-            fetchAskList()
+            return fetchAskList()
                 .then(response => { context.commit('SET_ASK', response.data) 
                     return response;
                 })
                 .catch(error => console.log(error))
         },
         FETCH_JOBS(context) {
-            fetchJobsList()
+            return fetchJobsList()
                 .then(response => { context.commit('SET_JOBS', response.data) 
                     return response;
                 })
                 .catch(error => console.log(error))
         },
-        FETCH_LIST({commit}, pageName) {
+        FETCH_LIST(context, pageName) {
             return fetchList(pageName)
-                .then(({ data }) => commit('SET_LIST', data))
+                .then(response => {
+                    context.commit('SET_LIST', response.data)
+                    return response;
+                })
             .catch(error => console.log(error))
         },
         FETCH_USER(context, username) {
