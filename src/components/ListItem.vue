@@ -30,6 +30,7 @@ export default {
     listItems() {
       return this.$store.state.list;
     }
+    
   }
 }
 </script>

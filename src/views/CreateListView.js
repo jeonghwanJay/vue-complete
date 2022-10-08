@@ -15,5 +15,4 @@ export default function createListView(pageName) {
             return createElement(ListView)
         }
     }
-    
 }
