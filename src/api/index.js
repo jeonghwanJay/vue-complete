@@ -31,6 +31,7 @@ async function fetchJobsList() {
 async function fetchList(pageName) {
     try {
         const response = axios.get(`${config.baseUrl}${pageName}/1.json`)
+        console.log(pageName)
         return response;   
     } catch (error) {
         console.log(error);
