@@ -1,4 +1,4 @@
-import { fetchAskList, fetchNewsList, fetchJobsList, fetchList, fetchUserInfo, fetchCommentId } from "@/api"
+import { fetchAskList, fetchNewsList, fetchJobsList, fetchList, fetchUserInfo, fetchCommentId } from "../api/index"
 
 export default {
     async FETCH_NEWS(context) {
@@ -16,8 +16,8 @@ export default {
         context.commit('SET_JOBS', response.data)
         return response;
     },
-    async FETCH_LIST(context) {
-        const response = await fetchList()
+    async FETCH_LIST(context, name) {
+        const response = await fetchList(name)
         context.commit('SET_LIST', response.data)
         return response;
     },

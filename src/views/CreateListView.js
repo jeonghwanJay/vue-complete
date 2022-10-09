@@ -1,11 +1,11 @@
 // import ListView from './ListView.vue'
 // import bus from '../utils/bus'
-// export default function createListView(pageName) {
+// export default function createListView(name) {
 //     return {
-//         pageName,
+//         name,
 //           created() {
 //                 bus.$emit('start:spinner')
-//             setTimeout(() => {
+//               setTimeout(() => {
 //                 this.$store.dispatch('FETCH_LIST', this.$route.name)
 //                 .then(() => bus.$emit('end:spinner'))
 //                 .catch((error) => console.log(error))
